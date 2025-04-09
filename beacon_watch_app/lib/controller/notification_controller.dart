@@ -21,7 +21,6 @@ class NotificationController extends GetxController {
     notificationResult.value = '';
 
 
-
     if (appwriteEndpoint.isEmpty) {
       isLoading.value = false;
       return;
@@ -43,7 +42,6 @@ class NotificationController extends GetxController {
     };
 
     final String jsonBody = jsonEncode(requestBody);
-    print("📩 Request Body: $jsonBody");
 
     final Map<String, String> headers = {
       'Content-Type': 'application/json',
@@ -51,7 +49,6 @@ class NotificationController extends GetxController {
     };
 
     try {
-      print("📡 Sending HTTP POST Request...");
       final response = await http.post(
         Uri.parse(appwriteEndpoint),
         headers: headers,
@@ -63,10 +60,10 @@ class NotificationController extends GetxController {
 
       if (response.statusCode == 200) {
         notificationResult.value =
-            '✅ Notification sent successfully: ${response.body}';
+            '✅ Notification sent successfully';
       } else {
         notificationResult.value =
-            '⚠️ Error sending notification: ${response.statusCode} - ${response.body}';
+            '⚠️ Error sending notification';
       }
     } catch (error) {
    

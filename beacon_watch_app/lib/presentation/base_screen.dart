@@ -21,18 +21,6 @@ class _WatchNotificationScreenState extends State<WatchNotificationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black, 
-      // appBar: AppBar(
-      //   backgroundColor: Colors.black,
-      //   title: Text(
-      //     'Watch Notification',
-      //     style: TextStyle(
-      //       fontSize: 18.sp,
-      //       fontWeight: FontWeight.bold,
-      //       color: Colors.white,
-      //     ),
-      //   ),
-      //   centerTitle: true,
-      // ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 16.h),
@@ -50,7 +38,7 @@ class _WatchNotificationScreenState extends State<WatchNotificationScreen> {
                     notificationController.isLoading.value
                         ? CircularProgressIndicator(color: Colors.white)
                         : Text(
-                          'Notification send Successfully',
+                          notificationController.notificationResult.value,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 14.sp,

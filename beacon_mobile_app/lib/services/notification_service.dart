@@ -39,15 +39,14 @@ class NotificationService {
         dotenv.env['APPWRITE_CLOUD_FUNCTION_ENDPOINT'] ?? '';
 
     try {
-      final response = await http.put(
+      await http.put(
         Uri.parse(appwriteEndpoint),
         headers: {"Content-Type": "application/json", "x-api-key": apiKey},
         body: jsonEncode({"token": token}),
       );
 
-      if (response.statusCode != 201) {
-      }
     } catch (e) {
+      throw Exception('Failed to register FCM token: $e');
     }
   }
 
